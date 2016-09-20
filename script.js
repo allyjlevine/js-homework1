@@ -52,26 +52,61 @@ document.getElementById('answer1').innerHTML= theOutput;
 //2. ---------//
 
 var day = today.getDate();
+day = (day < 10) ? '0' + day : day;
 var month = today.getMonth();
+month += 1;
+month = (month < 10) ? '0' + month : month;
 var year = today.getFullYear();
-var theOutput = (month + "-" + day + "-"+ year);
+var dashFormat = (month + "-" + day + "-"+ year + "<br>");
+var slashFormat = (month + "/" + day + "/"+ year + "<br>");
+var dayFormat = (day + "/" + month + "/"+ year);
+var theOutput = (dashFormat + slashFormat + dayFormat);
 
-if (month<10){
-    theOutput = ("0" + month + "-" + day + "-"+ year);
-}
+// if (month<10){
+//     theOutput = ("0" + month + "-" + day + "-"+ year);
+// }
+//
+// if (day<10){
+//     theOutput = (month + "-" + "0" + day + "-"+ year);
+// }
 
-if (day<10){
-    theOutput = (month + "-" + "0" + day + "-"+ year);
-}
 
-
-console.log(theOutput);
-document.getElementById('answer2').innerHTMl= theOutput;
+console.log(dashFormat);
+console.log(slashFormat);
+console.log(dayFormat);
+document.getElementById('answer2').innerHTML= theOutput;
+// document.getElementById('answer2').innerHTML= slashFormat;
+// document.getElementById('answer2').innerHTML= dayFormat;
 
 
 
 //3. ------//
 
-
+function printPage() {
+    window.print();
+}
 
 //4. ---------//
+
+var guessNum = document.getElementById('answer4');
+function enterNum() {
+    var randomInteger = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+    console.log(randomInteger);
+
+    var inputNum = prompt("Enter a number between 1 and 5");
+
+    if (inputNum == randomInteger) {
+      alert("Good Work");
+    }
+
+    else {
+      alert("Not Matched");
+    }
+}
+
+
+
+// function getRandomIntInclusive(1, 5) {
+//   min = Math.ceil(1);
+//   max = Math.floor(5);
+//   return Math.floor(Math.random() * (5 - 1 + 1)) + 1;
